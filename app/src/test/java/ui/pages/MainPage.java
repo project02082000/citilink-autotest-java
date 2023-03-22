@@ -60,6 +60,5 @@ public class MainPage {
         clickCatalog();
         moveToLaptopsPc();
         clickLaptops();
-
     }
 }

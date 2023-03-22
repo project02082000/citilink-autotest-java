@@ -50,7 +50,7 @@ public class E2ETest {
     @Owner("Ilya Butkovskiy")
     @Description("Product purchase")
     @Severity(SeverityLevel.CRITICAL)
-    void test_buy_product() {
+    void testBuyProduct() throws InterruptedException {
         mainPage.chooseLaptopsSection();
 
         laptopsPage.setFilters();
@@ -88,7 +88,7 @@ public class E2ETest {
         }
 
         System.out.print("laptopNameCheckout: " + checkoutPage.laptopNameCheckout + "\n");
-        System.out.print("laptopPriceCheckout: " + checkoutPage.laptopPriceCheckout + "\n\n");
+        System.out.print("laptopPriceCheckout: " + checkoutPage.laptopPriceCheckout + "\n");
 
         String laptopNameProductPage = productPage.laptopNameProductPage.replaceAll(" \\d*.\\d*ГГц", "");
         laptopNameProductPage = laptopNameProductPage.replaceAll(" \\[.*\\]", "");
@@ -107,8 +107,10 @@ public class E2ETest {
 
         shopChoicePage.choosePickupPoint();
 
+        System.out.print("\nsumPrice: " + checkoutPage.sumPrice + "\n\n");
+
         step("Check that final price on Checkout Page matches price on Product Page");
-        assertThat(checkoutPage.laptopPriceCheckout)
+        assertThat(checkoutPage.sumPrice)
                 .describedAs("Laptop's final price on Checkout Page doesn't match price on Product Page")
                 .isEqualTo(productPage.laptopPriceProductPage);
     }
