@@ -132,10 +132,10 @@ public class LaptopsPage {
         chooseMinPrice();
         chooseMaxPrice();
         clickReviewsButton();
-        chooseProcessor1();
-        chooseProcessor2();
         chooseScreenSize();
         chooseRam();
+        chooseProcessor1();
+        chooseProcessor2();
         clickShowProductButton();
         clickSortedByReviews();
     }
